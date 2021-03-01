@@ -22,7 +22,7 @@ namespace WaterReminder
         {
 
         }
-        public int timer(time)
+        public int timer(int time)
         {
             if (time != 0)
             {
