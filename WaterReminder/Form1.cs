@@ -14,8 +14,10 @@ namespace WaterReminder
 {
     public partial class Form1 : Form
     {
-        public double left;
-        
+        public int left;
+        public ListViewItem chosen;
+
+
         public Form1()
         {
             InitializeComponent();
@@ -24,41 +26,49 @@ namespace WaterReminder
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Минуты.SelectedItem != null && listView1.SelectedItems != null)
+            if (Минуты.SelectedItem != null & listView1.SelectedItems != null)
             {
-                //Countdown count = new Countdown(Минуты.SelectedItem, listView1.SelectedItems);
+                //выключение кнопки
                 button1.Enabled = false;
                 button1.Text = "Таймер запущен";
                 button1.BackColor = SystemColors.ControlDarkDark;
+                //установка таймера
                 timer1.Interval = 1000;
                 timer1.Enabled = true;
-                timer1.Tick += timer1_Tick;
-                ListViewItem chosen = listView1.SelectedItems[0];
+                timer1.Tick += Timer1_Tick;
+                //Какая минута выбрана
+                chosen = listView1.SelectedItems[0];
                 label1.Show();
+                //Минуты в секунды
                 left = Convert.ToInt32(Минуты.SelectedItem) * 60;
-                progressBar1.Maximum = Convert.ToInt32(left);
+                progressBar1.Maximum = left;
                 progressBar1.Step = 1;
                 label1.Text = $"Осталось: {Convert.ToString(left)} секунд";
-                //MessageBox.Show($"{Convert.ToString(Минуты.SelectedItem)}\n{chosen.IndentCount}");
-    }
+            }
+            else
+            {
+                MessageBox.Show("Выбери сколько минут и кол-во воды.");
+            }
         }
-        private void timer1_Tick(object sender, EventArgs e)
+
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             progressBar1.PerformStep();
-            label1.Text = $"Осталось: {Convert.ToString(left)} секунд";
             if (left > 0)
             {
                 left -= 1;
             }
-            else if(left == 0)
+            else if (left == 0)
             {
                 timer1.Enabled = false;
                 button1.BackColor = SystemColors.MenuHighlight;
                 button1.Text = "Начать отсчет";
                 button1.Enabled = true;
                 progressBar1.Value = 0;
+                Notify _ = new Notify(chosen);
             }
-            
+            label1.Text = $"Осталось: {Convert.ToString(left)} секунд";
+
         }
     }
 }

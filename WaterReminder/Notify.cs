@@ -11,24 +11,16 @@ using System.Threading;
 
 namespace WaterReminder
 {
-    public class Countdown
+    public class Notify
     {
         public int time;
-        public Countdown(object minutes)
+        public Notify(ListViewItem amount)
         {
-            time = Convert.ToInt32(minutes) * 60;
-        }
-        public Countdown()
-        {
-
-        }
-        public int timer(int time)
-        {
-            if (time != 0)
+            for (int i = 0; i < 10; i++)
             {
-                time--;
+                Console.Beep();
             }
-            return time;
+            MessageBox.Show($"ПЕЙ {Convert.ToString(amount.Text)} ВОДЫ");
         }
     }
 }
