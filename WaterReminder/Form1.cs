@@ -14,7 +14,7 @@ namespace WaterReminder
 {
     public partial class Form1 : Form
     {
-        public int left;
+        public double left;
         
         public Form1()
         {
@@ -27,22 +27,38 @@ namespace WaterReminder
             if (Минуты.SelectedItem != null && listView1.SelectedItems != null)
             {
                 //Countdown count = new Countdown(Минуты.SelectedItem, listView1.SelectedItems);
-                timer1.Interval = 100;
+                button1.Enabled = false;
+                button1.Text = "Таймер запущен";
+                button1.BackColor = SystemColors.ControlDarkDark;
+                timer1.Interval = 1000;
                 timer1.Enabled = true;
                 timer1.Tick += timer1_Tick;
                 ListViewItem chosen = listView1.SelectedItems[0];
                 label1.Show();
-                progressBar1.Maximum = Convert.ToInt32(Минуты.SelectedItem) * 60;
-                progressBar1.PerformStep();
-                Countdown count = new Countdown();
+                left = Convert.ToInt32(Минуты.SelectedItem) * 60;
+                progressBar1.Maximum = Convert.ToInt32(left);
+                progressBar1.Step = 1;
+                label1.Text = $"Осталось: {Convert.ToString(left)} секунд";
                 //MessageBox.Show($"{Convert.ToString(Минуты.SelectedItem)}\n{chosen.IndentCount}");
-                //label1.Text = "gay";
     }
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            left = count.timer();
-            label1.Text = Convert.ToString(left);
+            progressBar1.PerformStep();
+            label1.Text = $"Осталось: {Convert.ToString(left)} секунд";
+            if (left > 0)
+            {
+                left -= 1;
+            }
+            else if(left == 0)
+            {
+                timer1.Enabled = false;
+                button1.BackColor = SystemColors.MenuHighlight;
+                button1.Text = "Начать отсчет";
+                button1.Enabled = true;
+                progressBar1.Value = 0;
+            }
+            
         }
     }
 }

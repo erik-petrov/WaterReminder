@@ -30,10 +30,10 @@ namespace WaterReminder
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Чуточку"}, 0, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Средне", 0);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Много", 0);
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Средне", 0);
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Много", 0);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.Минуты = new System.Windows.Forms.ListBox();
@@ -85,16 +85,16 @@ namespace WaterReminder
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.listView1.HideSelection = false;
-            listViewItem4.IndentCount = 200;
-            listViewItem4.ToolTipText = "типа 200мл";
-            listViewItem5.IndentCount = 400;
-            listViewItem5.ToolTipText = "типа 400мл";
-            listViewItem6.IndentCount = 600;
-            listViewItem6.ToolTipText = "типа 600+мл";
+            listViewItem1.IndentCount = 200;
+            listViewItem1.ToolTipText = "типа 200мл";
+            listViewItem2.IndentCount = 400;
+            listViewItem2.ToolTipText = "типа 400мл";
+            listViewItem3.IndentCount = 600;
+            listViewItem3.ToolTipText = "типа 600+мл";
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem4,
-            listViewItem5,
-            listViewItem6});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3});
             this.listView1.LargeImageList = this.imageList1;
             this.listView1.Location = new System.Drawing.Point(305, 70);
             this.listView1.MultiSelect = false;
@@ -129,7 +129,7 @@ namespace WaterReminder
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(198, 143);
+            this.label1.Location = new System.Drawing.Point(160, 143);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 5;
@@ -159,7 +159,7 @@ namespace WaterReminder
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Мама мертва";
+            this.Text = "Таймер для воды";
             this.ResumeLayout(false);
             this.PerformLayout();
 
