@@ -19,6 +19,7 @@ namespace WaterReminder
         public Form1()
         {
             InitializeComponent();
+            timer1.Tick += Timer1_Tick;
             this.StartPosition = FormStartPosition.CenterScreen;
         }
         private void button1_Click(object sender, EventArgs e)
@@ -32,7 +33,6 @@ namespace WaterReminder
                 //установка таймера
                 timer1.Interval = 1000;
                 timer1.Start();
-                timer1.Tick += Timer1_Tick;
                 //Какая минута выбрана
                 chosen = listView1.SelectedItems[0];
                 label1.Show();
@@ -53,6 +53,7 @@ namespace WaterReminder
             mainButton(true);
             progressBar1.Value = 0;
             left = 0;
+            button2.Visible = false;
         }
         private void Timer1_Tick(object sender, EventArgs e)
         {
@@ -84,6 +85,20 @@ namespace WaterReminder
                 button1.Text = "Таймер запущен";
                 button1.BackColor = SystemColors.ControlDarkDark;
             }
+        }
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (FormWindowState.Minimized == this.WindowState)
+            {
+                Hide();
+                notifyIcon1.Visible = true;
+            }
+        }
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon1.Visible = false;
         }
     }
 }

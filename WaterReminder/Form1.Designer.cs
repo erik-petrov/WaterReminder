@@ -30,10 +30,10 @@ namespace WaterReminder
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "Чуточку (200мл)"}, 0, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Средне (400мл)", 0);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Много (500+мл)", 0);
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Средне (400мл)", 0);
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Много (500+мл)", 0);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.Минуты = new System.Windows.Forms.ListBox();
@@ -45,6 +45,7 @@ namespace WaterReminder
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // button1
@@ -86,16 +87,16 @@ namespace WaterReminder
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.listView1.HideSelection = false;
-            listViewItem1.IndentCount = 200;
-            listViewItem1.ToolTipText = "типа 200мл";
-            listViewItem2.IndentCount = 400;
-            listViewItem2.ToolTipText = "типа 400мл";
-            listViewItem3.IndentCount = 600;
-            listViewItem3.ToolTipText = "типа 600+мл";
+            listViewItem4.IndentCount = 200;
+            listViewItem4.ToolTipText = "типа 200мл";
+            listViewItem5.IndentCount = 400;
+            listViewItem5.ToolTipText = "типа 400мл";
+            listViewItem6.IndentCount = 600;
+            listViewItem6.ToolTipText = "типа 600+мл";
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3});
+            listViewItem4,
+            listViewItem5,
+            listViewItem6});
             this.listView1.LargeImageList = this.imageList1;
             this.listView1.Location = new System.Drawing.Point(305, 70);
             this.listView1.MultiSelect = false;
@@ -154,7 +155,15 @@ namespace WaterReminder
             this.label2.Size = new System.Drawing.Size(144, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Добро пожаловать в дурку";
-            this.label2.Visible = true;
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.BalloonTipText = "*вставь текст сюд пж*";
+            this.notifyIcon1.BalloonTipTitle = "Уведомление о воде.";
+            this.notifyIcon1.Text = "*и сюда*";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
             // Form1
             // 
@@ -188,6 +197,7 @@ namespace WaterReminder
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 
