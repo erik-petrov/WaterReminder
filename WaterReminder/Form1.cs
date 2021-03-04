@@ -16,12 +16,25 @@ namespace WaterReminder
     {
         public int left;
         public ListViewItem chosen;
+        //FormWindowState last;
         public Form1()
         {
             InitializeComponent();
             timer1.Tick += Timer1_Tick;
+            this.SizeChanged += Form1_SizeChanged;
             this.StartPosition = FormStartPosition.CenterScreen;
         }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                notifyIcon1.Visible = true;
+                notifyIcon1.ShowBalloonTip(12);
+                Hide();
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (Минуты.SelectedItem != null & listView1.SelectedItems != null)
@@ -58,6 +71,7 @@ namespace WaterReminder
         private void Timer1_Tick(object sender, EventArgs e)
         {
             label1.Text = $"Осталось: {Convert.ToString(left)} секунд";
+            notifyIcon1.Text = $"Осталось: {Convert.ToString(left)} секунд";
             progressBar1.PerformStep();
             if (left > 0)
             {
@@ -84,14 +98,6 @@ namespace WaterReminder
                 button1.Enabled = false;
                 button1.Text = "Таймер запущен";
                 button1.BackColor = SystemColors.ControlDarkDark;
-            }
-        }
-        private void Form1_Resize(object sender, EventArgs e)
-        {
-            if (FormWindowState.Minimized == this.WindowState)
-            {
-                Hide();
-                notifyIcon1.Visible = true;
             }
         }
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)

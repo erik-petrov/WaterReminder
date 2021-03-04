@@ -159,10 +159,9 @@ namespace WaterReminder
             // notifyIcon1
             // 
             this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.notifyIcon1.BalloonTipText = "*вставь текст сюд пж*";
+            this.notifyIcon1.BalloonTipText = "Чтобы развернуть программу, кликните 2 раза по иконке.";
             this.notifyIcon1.BalloonTipTitle = "Уведомление о воде.";
-            this.notifyIcon1.Text = "*и сюда*";
-            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
             // Form1
